@@ -23,14 +23,14 @@ function Register() {
 
           setTimeout(() => {
             document.getElementById("wrongEma").style.display = "none";
-          }, 3000);
+          }, 5000);
           // alert(err.message)
         });
     } else {
       document.getElementById("wrongPas").style.display = "inline-block";
       setTimeout(() => {
         document.getElementById("wrongPas").style.display = "none";
-      }, 3000);
+      }, 5000);
       // alert("password error");
     }
   };

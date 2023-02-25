@@ -24,7 +24,7 @@ function Login() {
         document.getElementById("wrongCre").style.display = "inline-block";
         setTimeout(() => {
           document.getElementById("wrongCre").style.display = "none";
-        }, 3000);
+        }, 5000);
       });
   };
   return (
