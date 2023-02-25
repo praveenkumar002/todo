@@ -81,7 +81,7 @@ function Login() {
         sign in
       </button>
 
-      <a style={{marginTop:"24px", color:"white"}} href="/register">Create account?</a>
+      <a style={{marginTop:"24px", color:"white"}} href="/#/register">Create account?</a>
     </div>
   );
 }
