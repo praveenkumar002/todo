@@ -42,6 +42,7 @@
   color: #dee2e6;
 }
 .todoSubmit[type="submit"]:hover {
+  cursor: pointer;
   transition: 1s;
   background-color: #7da4ff;
 }
@@ -67,6 +68,7 @@ input.todoCheckBox {
   width: 25px;
   height: 25px;
   accent-color: green;
+  cursor: pointer;
 }
 input.todoCheckBox:focus {
   accent-color: green;
@@ -92,8 +94,10 @@ input.todoCheckBox:active {
   border-radius: 14px;
   background-color: #f8f471;
   padding: 0;
+  cursor: pointer;
 }
 .todoDeleteButtontrue {
+  cursor: pointer;
   transition: 1s;
   border: none;
   background-color: #a7a34a;

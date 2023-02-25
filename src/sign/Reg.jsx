@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { Envelope, Password, Upload, Repeat } from "phosphor-react";
 
 function Register() {
   const navigate = useNavigate();
@@ -16,9 +17,21 @@ function Register() {
         .then(() => {
           navigate("/");
         })
-        .catch((err) => alert(err.message));
+        .catch((err) => {
+          document.getElementById("wrongEma").style.display = "inline-block";
+          document.getElementById("wrongEma").innerHTML = err.message;
+
+          setTimeout(() => {
+            document.getElementById("wrongEma").style.display = "none";
+          }, 3000);
+          // alert(err.message)
+        });
     } else {
-      alert("password error");
+      document.getElementById("wrongPas").style.display = "inline-block";
+      setTimeout(() => {
+        document.getElementById("wrongPas").style.display = "none";
+      }, 3000);
+      // alert("password error");
     }
   };
   return (
@@ -29,12 +42,30 @@ function Register() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        width: "100%",
       }}
     >
-      <form style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          <div style={{ color: "white" }}>email : </div>
+      <h1
+        style={{
+          color: "white",
+          marginBottom: "38px",
+          letterSpacing: "2px",
+          fontFamily: "cursive",
+        }}
+      >
+        Sign up
+      </h1>
+
+      <form style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div
+            style={{ color: "white", display: "flex", alignItems: "center" }}
+          >
+            <Envelope size={32} color="#ffff" weight="fill" />
+            &nbsp;Email :
+          </div>
           <input
+            required
             style={{
               width: "100%",
               padding: "4px",
@@ -48,9 +79,15 @@ function Register() {
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          <div style={{ color: "white" }}>password</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div
+            style={{ color: "white", display: "flex", alignItems: "center" }}
+          >
+            <Password size={32} color="#ffff" weight="fill" />
+            &nbsp;Password :
+          </div>
           <input
+            required
             style={{
               width: "100%",
               padding: "4px",
@@ -64,9 +101,15 @@ function Register() {
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          <div style={{ color: "white" }}>Confirm password : </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div
+            style={{ color: "white", display: "flex", alignItems: "center" }}
+          >
+            <Repeat size={32} color="#ffff" weight="fill" />
+            &nbsp;Confirm password :
+          </div>
           <input
+            required
             style={{
               width: "100%",
               padding: "4px",
@@ -82,21 +125,70 @@ function Register() {
       </form>
 
       <button
+      title="Register"
         style={{
-          color: "white",
-          letterSpacing: "1px",
-          fontSize: "14px",
-          marginTop: "24px",
+          marginTop: "32px",
           padding: "8px 24px",
-          borderRadius: "4px",
           border: "none",
-          backgroundColor: "#45a049",
+          backgroundColor: "#111C2F",
+          cursor: "pointer",
         }}
         onClick={handleRegister}
       >
-        register
+        <Upload size={32} color="#ffff" weight="fill" />
       </button>
-      <a style={{marginTop:"24px", color:"white"}} href="https://praveenkumar002.github.io/todo/">sign in</a>
+      <a
+        style={{
+          marginTop: "48px",
+          color: "white",
+          fontFamily: "cursive",
+          letterSpacing: "1.5px",
+          wordSpacing: "2px",
+        }}
+        href="https://praveenkumar002.github.io/todo/"
+        title="Login"
+      >
+        Already have an account?
+      </a>
+
+      <p
+        id="wrongPas"
+        style={{
+          display: "none",
+          backgroundColor: "rgba(255, 0, 0, 0.39)",
+          fontFamily: "Impact",
+          color: "white",
+          padding: "8px 12px",
+          borderRadius: "12px",
+          position: "fixed",
+          letterSpacing: "0.9px",
+          top: "10px",
+          left: "10%",
+          right: "10%",
+          textAlign: "center",
+        }}
+      >
+        Password and Confirm Password must be same.
+      </p>
+      <p
+        id="wrongEma"
+        style={{
+          display: "none",
+          backgroundColor: "rgba(255, 0, 0, 0.39)",
+          fontFamily: "Impact",
+          color: "white",
+          padding: "8px 12px",
+          borderRadius: "12px",
+          position: "fixed",
+          letterSpacing: "0.9px",
+          top: "10px",
+          left: "10%",
+          right: "10%",
+          textAlign: "center",
+        }}
+      >
+        Invalid email.
+      </p>
     </div>
   );
 }

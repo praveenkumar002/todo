@@ -29,7 +29,7 @@
     background-color: #111C2F;
 }
 .sign .button:hover {
-    
+    cursor: pointer;
     border: none;
     background-color: #111C2F;
 }
