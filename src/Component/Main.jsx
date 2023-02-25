@@ -9,6 +9,7 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
+import Footer from "./Footer";
 
 function Main() {
   const navigate = useNavigate();
@@ -150,6 +151,7 @@ function Main() {
 
         <TodoApp email={location.state.email}/>
       </main>
+      <Footer />
     </>
   );
 }
