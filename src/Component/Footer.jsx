@@ -4,7 +4,7 @@ function Footer() {
     const date = new Date().toLocaleDateString();
   return (
     <>
-      <p className="footerVersion">Version:{version.toFixed(1)} {date}</p>
+      <p className="footerVersion">Version:{version} {date}</p>
     </>
   );
 }
