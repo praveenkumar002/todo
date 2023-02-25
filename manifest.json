@@ -3,18 +3,18 @@
   "name": "Todo App",
   "icons": [
     {
-      "src": "listIcon.svg",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg"
+      "src": "list.ico",
+      "sizes": "256x256",
+      "type": "image/x-icon"
     },
     {
-      "src": "listIcon.svg",
-      "type": "image/svg",
+      "src": "list192.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "listIcon.svg",
-      "type": "image/svg",
+      "src": "list512.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
