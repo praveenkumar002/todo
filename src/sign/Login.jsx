@@ -109,8 +109,9 @@ function Login() {
         style={{
           marginTop: "34px",
           color: "white",
-          fontFamily: "cursive",
-          letterSpacing: "1.5px",
+          fontStyle: "italic",
+          fontFamily: "initial",
+          letterSpacing: "2px",
           wordSpacing: "2px",
         }}
         href="https://praveenkumar002.github.io/todo/#/register"
