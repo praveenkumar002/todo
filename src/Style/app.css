@@ -1,0 +1,7 @@
+
+.appMain {
+    background-color: #111C2F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

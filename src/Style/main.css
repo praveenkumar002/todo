@@ -1,0 +1,70 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.main {
+    min-height: 100vh;
+    height: 100%;
+    background-color: #111C2F;
+    padding: 0 12px;
+}
+/* -- */
+.sign{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 10px 4px 10px 4px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #668ADD;
+}
+.sign .user{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+}
+.sign button {
+    border: none;
+    background-color: #111C2F;
+}
+.sign .button:hover {
+    
+    border: none;
+    background-color: #111C2F;
+}
+/* -------- */
+
+.mainHeader{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.mainHeaderGreeting{
+    color: #668ADD;
+    font-size: 58px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.mainHeaderDetailDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #dee2e6;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0.1px;
+}
+.mainHeaderDates{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.date, .time {
+    color: #636f80;
+}
+
+/* -- */
+

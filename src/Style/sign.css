@@ -1,0 +1,66 @@
+.sign {
+  height: 100vh;
+  background-color: #111c2f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 38px;
+}
+.signForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.signFornLabel {
+  font-size: 18px;
+}
+
+.signFormInput[type="email"],
+.signFormInput[type="password"] {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signFormInput[type="email"]:focus,
+.signFormInput[type="password"]:focus {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.signButton {
+  width: 100%;
+  color: white;
+  padding: 10px 0px;
+  font-size: 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #45a049 !important;
+}
+
+.signLink {
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  background-color: #0b57d0;
+  padding: 8px 8px;
+  border-radius: 4px;
+}
+.signLink:hover {
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  background-color: #2d74e7;
+  padding: 8px 8px;
+  border-radius: 4px;
+}
+
+
