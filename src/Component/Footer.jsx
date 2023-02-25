@@ -1,9 +1,10 @@
 import "../Style/footer.css"
 function Footer() {
-    const version = 1.2;
+    const version = 2.0;
+    const date = new Date().toLocaleDateString();
   return (
     <>
-      <p className="footerVersion">Version : {version}</p>
+      <p className="footerVersion">Version : {version} {date}</p>
     </>
   );
 }

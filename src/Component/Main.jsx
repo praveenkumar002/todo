@@ -100,6 +100,11 @@ function Main() {
       });
   };
   
+  const[todoLength, setTodoLength] = useState(0)
+  const listCount = (length) => {
+    console.log(length);
+    setTodoLength(length)
+  }
   return (
     <>
       <main className="main">
@@ -135,7 +140,7 @@ function Main() {
               </h5>
             </div>
             <div className="mainHeaderAppDet">
-              <h3>Todo list</h3>
+              <h3>{ todoLength>0 ? todoLength : "Todo"} lists</h3>
               <h5 className="time">
                 {time}:{minute}:{second}
               </h5>
@@ -149,7 +154,7 @@ function Main() {
 
         {/*  */}
 
-        <TodoApp email={location.state.email}/>
+        <TodoApp email={location.state.email} listCount={listCount}/>
       </main>
       <Footer />
     </>

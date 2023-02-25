@@ -15,7 +15,7 @@ import {
 
 
 // let num;
-function TodoApp({email}) {
+function TodoApp({email, listCount}) {
   
   const [todoList, setTodoList] = useState([]);
   const [usertaskName, setUserTaskName] = useState("");
@@ -29,6 +29,7 @@ function TodoApp({email}) {
         todoListArray.push({ ...doc.data(), id: doc.id });
       });
       setTodoList(todoListArray);
+      listCount(todoListArray.length);
     });
 
     todoList.forEach((list) => {
