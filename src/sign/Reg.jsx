@@ -96,7 +96,7 @@ function Register() {
       >
         register
       </button>
-      <a style={{marginTop:"24px", color:"white"}} href="/">sign in</a>
+      <a style={{marginTop:"24px", color:"white"}} href="https://praveenkumar002.github.io/todo/">sign in</a>
     </div>
   );
 }
