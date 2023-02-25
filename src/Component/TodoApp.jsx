@@ -16,13 +16,13 @@ import {
 
 // let num;
 function TodoApp({email}) {
-  console.log(email);
+  
   const [todoList, setTodoList] = useState([]);
   const [usertaskName, setUserTaskName] = useState("");
-  const [loading, setLoading] = useState(true);
   //
   useEffect(() => {
     const q = query(collection(db, `${email}`));
+
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let todoListArray = [];
       querySnapshot.forEach((doc) => {
@@ -40,7 +40,7 @@ function TodoApp({email}) {
     });
 
     return () => unsubscribe();
-  }, [todoList]);
+  }, [email]);
   //
 
   const handleSubmit = async (event) => {
