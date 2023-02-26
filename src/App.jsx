@@ -1,7 +1,7 @@
 import Footer from "./Component/Footer";
 import Main from "./Component/Main";
 import Register from "./sign/Reg";
-import {HashRouter as Router, Routes, Route} from "react-router-dom"
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./sign/Login";
 
 import "./Style/app.css";
@@ -16,10 +16,6 @@ function App() {
           <Route path="/todo" element={<Main />}></Route>
         </Routes>
       </Router>
-      {/* <Main />
-      <Footer /> */}
-      
-      {/* <Login /> */}
     </div>
   );
 }

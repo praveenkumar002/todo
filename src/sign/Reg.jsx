@@ -1,16 +1,24 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+// react import
 import { useState } from "react";
-import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+
+// Firebase imports
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+
+// Icon pack import
 import { Envelope, Password, Upload, Repeat } from "phosphor-react";
 
 function Register() {
+  // navigate from react-router-dom
   const navigate = useNavigate();
 
+  // state variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  // Register user function
   const handleRegister = () => {
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
@@ -34,6 +42,7 @@ function Register() {
       // alert("password error");
     }
   };
+
   return (
     <div
       style={{
@@ -45,6 +54,7 @@ function Register() {
         width: "100%",
       }}
     >
+      {/* heading */}
       <h1
         style={{
           color: "white",
@@ -56,6 +66,7 @@ function Register() {
         Sign up
       </h1>
 
+      {/* form */}
       <form style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
           <div
@@ -137,6 +148,7 @@ function Register() {
       >
         <Upload size={32} color="#ffff" weight="fill" />
       </button>
+
       <a
         style={{
           marginTop: "48px",

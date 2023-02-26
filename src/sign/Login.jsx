@@ -1,18 +1,26 @@
+// react import
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+//firebase import
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+
+//icon pack import
 import { Envelope, Password, SignIn, ArrowClockwise } from "phosphor-react";
 
 function Login() {
+  //State variables for email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //navigate from react router dom
   const navigate = useNavigate();
 
+  //Maintain login after effects in dom
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -21,6 +29,7 @@ function Login() {
     });
   }, []);
 
+  //Method for Sign in
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
@@ -39,6 +48,7 @@ function Login() {
       });
   };
 
+  //Method to handle forget password
   const handleForgetPassword = async () => {
     if (email === "") {
       document.getElementById("wrongCre").innerHTML =
@@ -61,6 +71,7 @@ function Login() {
       });
     }
   };
+
   return (
     <div
       style={{
@@ -71,6 +82,7 @@ function Login() {
         alignItems: "center",
       }}
     >
+      {/* heading */}
       <h1
         style={{
           color: "white",
@@ -81,6 +93,8 @@ function Login() {
       >
         Log in
       </h1>
+
+      {/* form */}
       <form style={{ display: "flex", flexDirection: "column", gap: "38px" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "14px" }}>
           <div
@@ -154,23 +168,35 @@ function Login() {
         Create account ?
       </a>
 
-      <div style={{ display: "flex", flexDirection: "row", gap: "2px", alignSelf:"center", cursor:"pointer", marginTop:"32px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "2px",
+          alignSelf: "center",
+          cursor: "pointer",
+          marginTop: "32px",
+        }}
+      >
         {/* <ArrowClockwise size={30} color="#ffff" weight="fill" /> */}
-          <button
+        <button
           style={{
             color: "white",
             fontStyle: "italic",
             fontFamily: "initial",
-            backgroundColor:"#111C2F",
+            backgroundColor: "#111C2F",
             fontSize: "18px",
-            border:"none",
+            border: "none",
             cursor: "pointer",
             letterSpacing: "2px",
-          wordSpacing: "2px",
-          textDecoration:"underLine"
+            wordSpacing: "2px",
+            textDecoration: "underLine",
           }}
-           onClick={handleForgetPassword}>&nbsp;Forget password ?</button>
-        </div>
+          onClick={handleForgetPassword}
+        >
+          &nbsp;Forget password ?
+        </button>
+      </div>
 
       <p
         id="wrongCre"

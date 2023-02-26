@@ -1,7 +1,8 @@
-import "../Style/todoApp.css";
+// react imports
 import { Trash } from "phosphor-react";
 import { useEffect, useState } from "react";
 
+// firebase imports
 import { db } from "../firebase";
 import {
   query,
@@ -13,16 +14,17 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+// CSS import
+import "../Style/todoApp.css";
 
-// let num;
-function TodoApp({email, listCount}) {
-  
+function TodoApp({ email, listCount }) {
+  // state variables
   const [todoList, setTodoList] = useState([]);
   const [usertaskName, setUserTaskName] = useState("");
-  //
+
+  // Import user tasks
   useEffect(() => {
     const q = query(collection(db, `${email}`));
-
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let todoListArray = [];
       querySnapshot.forEach((doc) => {
@@ -42,8 +44,8 @@ function TodoApp({email, listCount}) {
 
     return () => unsubscribe();
   }, [email]);
-  //
 
+  // Handle submit task
   const handleSubmit = async (event) => {
     event.preventDefault(event);
     if (usertaskName === "") {
@@ -60,10 +62,12 @@ function TodoApp({email, listCount}) {
     setUserTaskName("");
   };
 
+  // Handle delete task
   const handleDelete = async (deleteId) => {
     await deleteDoc(doc(db, `${email}`, deleteId));
   };
 
+  // handle check box
   const handleCheckBox = async (list) => {
     await updateDoc(doc(db, `${email}`, list.id), {
       completion: !list.completion,
@@ -90,6 +94,9 @@ function TodoApp({email, listCount}) {
           onClick={handleSubmit}
         />
       </form>
+
+      {/* display task */}
+
       {todoList.length ? (
         todoList.map((list) => (
           <aside className={"aside" + list.completion} key={list.id}>

@@ -7,6 +7,7 @@
 .todoTaskNamefalse::-webkit-scrollbar {
   display: none;
 }
+
 .todoForm {
   display: flex;
   flex-direction: column;
@@ -103,6 +104,7 @@ input.todoCheckBox:active {
   background-color: #a7a34a;
 }
 
+/* -------------------- */
 #emptyTask {
   background-color: rgba(255, 0, 0, 0.39);
   font-family: Impact;
