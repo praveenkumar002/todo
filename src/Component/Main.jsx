@@ -23,7 +23,7 @@ function Main() {
 
   const [day, setDay] = useState(date.getDay());
   const [weekDay] = useState([
-    "Sunady...",
+    "Sunday...",
     "Monday...",
     "Tuesday...",
     "Wednesday...",
@@ -110,8 +110,8 @@ function Main() {
       <main className="main">
         <div className="sign">
           <div className="user">
-            <User size={24} weight="fill" />
-            &nbsp;<p>{`${location.state.email}`}</p>
+            <User size={24} weight="fill" color="#668ADD"/>
+            &nbsp;<p className="userName">{`${location.state.email}`.split('@')[0]}</p>
           </div>
           <button onClick={handleSignOut}>
             <SignOut className="button" size={32} weight="fill" color="white" />

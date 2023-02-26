@@ -1,12 +1,18 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { Envelope, Password, SignIn } from "phosphor-react";
+import { Envelope, Password, SignIn, ArrowClockwise } from "phosphor-react";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -14,6 +20,7 @@ function Login() {
       }
     });
   }, []);
+
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
@@ -21,11 +28,38 @@ function Login() {
       })
       .catch((err) => {
         // alert(err.message)
+        document.getElementById("wrongCre").innerHTML =
+          "Please enter valid Username or Password.";
+        document.getElementById("wrongCre").style.backgroundColor =
+          "rgba(255, 0, 0, 0.39)";
         document.getElementById("wrongCre").style.display = "inline-block";
         setTimeout(() => {
           document.getElementById("wrongCre").style.display = "none";
         }, 5000);
       });
+  };
+
+  const handleForgetPassword = async () => {
+    if (email === "") {
+      document.getElementById("wrongCre").innerHTML =
+        "Please enter valid mail id.";
+      document.getElementById("wrongCre").style.backgroundColor =
+        "rgba(255, 0, 0, 0.39)";
+      document.getElementById("wrongCre").style.display = "inline-block";
+      setTimeout(() => {
+        document.getElementById("wrongCre").style.display = "none";
+      }, 5000);
+    } else {
+      await sendPasswordResetEmail(auth, email).then(() => {
+        document.getElementById("wrongCre").innerHTML =
+          "Password Reset Email Has Been Sent";
+        document.getElementById("wrongCre").style.backgroundColor = "#37b24e77";
+        document.getElementById("wrongCre").style.display = "inline-block";
+        setTimeout(() => {
+          document.getElementById("wrongCre").style.display = "none";
+        }, 5000);
+      });
+    }
   };
   return (
     <div
@@ -55,7 +89,7 @@ function Login() {
             <Envelope size={32} color="#ffff" weight="fill" />
           </div>
           <input
-          required
+            required
             style={{
               width: "100%",
               padding: "4px",
@@ -76,7 +110,7 @@ function Login() {
             <Password size={32} color="#ffff" weight="fill" />
           </div>
           <input
-          required
+            required
             style={{
               width: "100%",
               padding: "4px",
@@ -92,7 +126,7 @@ function Login() {
       </form>
 
       <button
-      title="Login"
+        title="Login"
         style={{
           marginTop: "32px",
           padding: "8px 24px",
@@ -119,6 +153,24 @@ function Login() {
       >
         Create account ?
       </a>
+
+      <div style={{ display: "flex", flexDirection: "row", gap: "2px", alignSelf:"center", cursor:"pointer", marginTop:"32px" }}>
+        {/* <ArrowClockwise size={30} color="#ffff" weight="fill" /> */}
+          <button
+          style={{
+            color: "white",
+            fontStyle: "italic",
+            fontFamily: "initial",
+            backgroundColor:"#111C2F",
+            fontSize: "18px",
+            border:"none",
+            cursor: "pointer",
+            letterSpacing: "2px",
+          wordSpacing: "2px",
+          textDecoration:"underLine"
+          }}
+           onClick={handleForgetPassword}>&nbsp;Forget password ?</button>
+        </div>
 
       <p
         id="wrongCre"
