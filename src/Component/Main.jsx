@@ -111,7 +111,7 @@ function Main() {
         <div className="sign">
           <div className="user">
             <User size={24} weight="fill" color="#668ADD"/>
-            &nbsp;<p className="userName">{`${location.state.email}`.split('@')[0]}</p>
+            &nbsp;<p className="userName">{`${location.state.email}`.split('.')[0].split('@')[0]}</p>
           </div>
           <button onClick={handleSignOut}>
             <SignOut className="button" size={32} weight="fill" color="white" />
