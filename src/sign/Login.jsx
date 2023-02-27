@@ -6,11 +6,16 @@ import { useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
 //icon pack import
 import { Envelope, Password, SignIn, ArrowClockwise } from "phosphor-react";
+
+// import css
+import "../Style/login.css";
 
 function Login() {
   //State variables for email and password
@@ -72,21 +77,90 @@ function Login() {
     }
   };
 
+  //Sign in with google
+  const googleProvider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        navigate("/todo", { state: { email: res.user.email } });
+      })
+      .catch((err) => alert(err.message));
+  };
   return (
     <div
       style={{
-        height: "100vh",
+        marginTop: "0px !important",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "start",
         alignItems: "center",
+        marginTop: "64px",
       }}
     >
+      <div
+        id="GoogleSignin"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "24px",
+          marginBottom: "58px",
+        }}
+      >
+        <a
+          id="GoogleSigninC"
+          style={{
+            color: "white",
+            fontStyle: "italic",
+            fontFamily: "initial",
+            letterSpacing: "2px",
+            wordSpacing: "2px",
+            borderRadius: "4px",
+            padding: " 14px 20px",
+            backgroundColor: "#3B5998",
+            textDecoration: "none",
+          }}
+          href="https://praveenkumar002.github.io/todo/#/register"
+          title="Register"
+        >
+          Create account ?
+        </a>
+        <a
+          id="GoogleSigninG"
+          style={{
+            color: "white",
+            fontStyle: "italic",
+            fontFamily: "initial",
+            letterSpacing: "2px",
+            wordSpacing: "2px",
+            border: "2px solid white",
+            borderRadius: "4px",
+            padding: " 12px 20px",
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
+          onClick={signInWithGoogle}
+          title="Sign iin with Google"
+        >
+          Sign in with Google
+        </a>
+      </div>
+
+      <div
+        id="hrLine"
+        style={{ display: "flex", alignItems: "center", marginBottom: "58px" }}
+      >
+        <hr style={{ width: "150px" }} />
+        <p style={{ color: "white", margin: "0px 12px" }}>or</p>
+        <hr style={{ width: "150px" }} />
+      </div>
+
       {/* heading */}
       <h1
         style={{
           color: "white",
-          marginBottom: "38px",
+          marginBottom: "28px",
           letterSpacing: "2px",
           fontFamily: "cursive",
         }}
@@ -95,7 +169,7 @@ function Login() {
       </h1>
 
       {/* form */}
-      <form style={{ display: "flex", flexDirection: "column", gap: "38px" }}>
+      <form style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "14px" }}>
           <div
             style={{ color: "white", display: "flex", alignItems: "center" }}
@@ -142,7 +216,7 @@ function Login() {
       <button
         title="Login"
         style={{
-          marginTop: "32px",
+          marginTop: "28px",
           padding: "8px 24px",
           border: "none",
           backgroundColor: "#111C2F",
@@ -153,50 +227,24 @@ function Login() {
         <SignIn size={32} color="white" weight="fill" />
       </button>
 
-      <a
+      <button
         style={{
-          marginTop: "34px",
           color: "white",
           fontStyle: "italic",
           fontFamily: "initial",
           letterSpacing: "2px",
           wordSpacing: "2px",
+          backgroundColor: "#111c2f",
+          border: "none",
+          marginTop: "28px",
+          textDecoration: "underline",
+          fontSize: "16px",
         }}
-        href="https://praveenkumar002.github.io/todo/#/register"
-        title="Register"
+        onClick={handleForgetPassword}
+        title="Enter mail id to get reset link"
       >
-        Create account ?
-      </a>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "2px",
-          alignSelf: "center",
-          cursor: "pointer",
-          marginTop: "32px",
-        }}
-      >
-        {/* <ArrowClockwise size={30} color="#ffff" weight="fill" /> */}
-        <button
-          style={{
-            color: "white",
-            fontStyle: "italic",
-            fontFamily: "initial",
-            backgroundColor: "#111C2F",
-            fontSize: "18px",
-            border: "none",
-            cursor: "pointer",
-            letterSpacing: "2px",
-            wordSpacing: "2px",
-            textDecoration: "underLine",
-          }}
-          onClick={handleForgetPassword}
-        >
-          &nbsp;Forget password ?
-        </button>
-      </div>
+        &nbsp;Forget password ?
+      </button>
 
       <p
         id="wrongCre"

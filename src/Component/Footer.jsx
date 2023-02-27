@@ -1,6 +1,6 @@
 import "../Style/footer.css"
 function Footer() {
-    const version = 2.2;
+    const version = 2.3;
     const date = new Date().toLocaleDateString();
   return (
     <>
