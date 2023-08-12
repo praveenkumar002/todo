@@ -1,5 +1,6 @@
 .section {
   box-sizing: border-box;
+  overflow: none;
 }
 .todoTaskNametrue::-webkit-scrollbar {
   display: none;
@@ -84,7 +85,7 @@ input.todoCheckBox:active {
   font-size: 24px;
   padding: none;
   padding: none;
-  overflow: scroll;
+  overflow: auto;
 }
 .todoTaskNametrue {
   text-decoration: line-through rgb(173, 0, 0) 5px;

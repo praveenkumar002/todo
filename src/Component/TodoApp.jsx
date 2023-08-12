@@ -43,7 +43,7 @@ function TodoApp({ email, listCount }) {
     });
 
     return () => unsubscribe();
-  }, [email, listCount, todoList]);
+  }, [email, listCount, todoList, usertaskName]);
 
   // Handle submit task
   const handleSubmit = async (event) => {
